@@ -23,20 +23,31 @@ class App extends Component {
         img: "/productos/lechuga.jpg",
       },
     ],
+    cart: [],
+  };
+
+  addToCart = (product) => {
+    const { cart } = this.state;
+    if (cart.find((item) => item.name === product.name)) {
+      const newCart = cart.map((item) =>
+        item.name === product.name ? { ...item, qty: item.qty + 1 } : item
+      );
+      return this.setState({
+        cart: newCart,
+      });
+    }
+    return this.setState({
+      cart: this.state.cart.concat({ ...product, qty: 1 }),
+    });
   };
 
   render() {
     return (
       <div>
-        <Navbar />
+        <Navbar cart={this.state.cart}/>
         <Layout>
           <Title />
-          <Products
-            addToCart={() => {
-              console.log("add to cart");
-            }}
-            products={this.state.products}
-          />
+          <Products addToCart={this.addToCart} products={this.state.products} />
         </Layout>
       </div>
     );

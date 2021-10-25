@@ -1,6 +1,6 @@
 import { Component } from "react";
-import Logo from './Logo'
-import Cart from './Cart'
+import Logo from "./Logo";
+import Cart from "./Cart";
 
 const styles = {
   navbar: {
@@ -17,10 +17,11 @@ const styles = {
 
 class Navbar extends Component {
   render() {
+    const { cart } = this.props;
     return (
       <nav style={styles.navbar}>
-        <Logo/>
-        <Cart/>
+        <Logo />
+        <Cart cart={cart}/>
       </nav>
     );
   }
