@@ -1,5 +1,6 @@
 import { Component } from "react";
 import BubbleAlert from "./BubbleAlert";
+import CartDetails from './CartDetails'
 
 const styles = {
   cart: {
@@ -27,6 +28,7 @@ class Cart extends Component {
           {qty ? <BubbleAlert value={qty} /> : null}
         </span>
         <button style={styles.cart}>My Cart</button>
+        <CartDetails cart={cart}/>
       </div>
     );
   }
