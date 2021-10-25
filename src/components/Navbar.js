@@ -17,11 +17,11 @@ const styles = {
 
 class Navbar extends Component {
   render() {
-    const { cart } = this.props;
+    const { cart, cartVisibility, showCart } = this.props;
     return (
       <nav style={styles.navbar}>
         <Logo />
-        <Cart cart={cart}/>
+        <Cart cart={cart} cartVisibility={cartVisibility} showCart={showCart}/>
       </nav>
     );
   }

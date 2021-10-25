@@ -24,6 +24,7 @@ class App extends Component {
       },
     ],
     cart: [],
+    CartVisibility: false,
   };
 
   addToCart = (product) => {
@@ -41,10 +42,19 @@ class App extends Component {
     });
   };
 
+  showCart = () => {
+    if (!this.state.cart.length) return;
+    this.setState({ CartVisibility: !this.state.CartVisibility });
+  };
+
   render() {
     return (
       <div>
-        <Navbar cart={this.state.cart}/>
+        <Navbar
+          cart={this.state.cart}
+          cartVisibility={this.state.CartVisibility}
+          showCart={this.showCart}
+        />
         <Layout>
           <Title />
           <Products addToCart={this.addToCart} products={this.state.products} />
